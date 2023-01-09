@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        body {
+            display:flex;
+            width:100%;
+            margin:0;
+        }
+
+        #left, #right {
+            width:100%;
+        }
+
+        #shirt-image {
+            width:75%;
+            background-image: url(horizontal.png);
+            background-size: contain;
+            background-color:#ff6666;
+        }
+
+
+
+    </style>
+
+</head>
+<body>
+    <div id="left">
+        <img id="shirt-image" src="shirt.png" />
+    </div>
+
+    <div id="right">
+
+        <p>Shirt Size <span id="size-value">75%</span></p>
+        <input  id="shirt-size"
+                type="range"
+                min="0"
+                max="100"
+                value="75"
+        />
+
+        <p>Shirt Color <span id="color-value">#FF6666</span></p>
+        <input  id="shirt-color"
+                type="color"
+                value="#ff6666"
+        />
+
+        <p>Heather Pattern</p>
+        <select  id="heather-pattern">
+            <option value="horizontal.png">Horizontal</option>
+            <option value="vertical.png">Vertical</option>
+            <option value="diagonal.png">Diagonal</option>
+            <option value="static.png">Static</option>
+        </select>
+
+
+
+
+    </div>
+
+    <script>
+
+        const slide = document.getElementById('shirt-size');
+        const shirtColor = document.getElementById('shirt-color');
+        const heatherPattern = document.getElementById('heather-pattern');
+        const shirt = document.getElementById('shirt-image');
+
+        slide.onmouseup = () => {
+            console.log(slide.value)
+            shirt.style.width = `${slide.value}%`
+            document.getElementById('size-value').innerText = `${slide.value}%`
+        }
+
+        shirtColor.onchange = () => {
+            shirt.style.backgroundColor = `${shirtColor.value}` 
+            document.getElementById('color-value')
+                .innerText = `${shirtColor.value.toUpperCase()}` 
+        }
+
+        heatherPattern.onchange = () => {
+            const newPattern = heatherPattern.value
+            shirt.style.backgroundImage = `url(${newPattern})`
+            console.log(`url(${newPattern})`)
+        }
+
+
+    </script>
+
+</body>
+</html>

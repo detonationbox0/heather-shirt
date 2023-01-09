@@ -53,10 +53,8 @@
 
         <p>Heather Pattern</p>
         <select  id="heather-pattern">
+            <option value="-">None</option>
             <option value="horizontal.png">Horizontal</option>
-            <option value="vertical.png">Vertical</option>
-            <option value="diagonal.png">Diagonal</option>
-            <option value="static.png">Static</option>
         </select>
 
 
@@ -84,9 +82,12 @@
         }
 
         heatherPattern.onchange = () => {
-            const newPattern = heatherPattern.value
-            shirt.style.backgroundImage = `url(${newPattern})`
-            console.log(`url(${newPattern})`)
+            const newPattern = heatherPattern.value;
+            if (newPattern == "-") {
+                shirt.style.backgroundImage = `unset` 
+            } else {
+                shirt.style.backgroundImage = `url(${newPattern})`
+            }
         }
 
 
